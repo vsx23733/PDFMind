@@ -1,0 +1,127 @@
+# This file created by conda-build 3.22.0
+# ------------------------------------------------
+
+package:
+  name: poppler
+  version: 22.11.0
+source:
+  patches:
+    - disable-libtiff-win32-io.patch
+    - exportsymbols.patch
+    - includesystembeforejpeg.patch
+    - windows-data.patch
+  sha256: 093ba9844ed774285517361c15e21a31ba4df278a499263d4403cca74f2da828
+  url: https://poppler.freedesktop.org/poppler-22.11.0.tar.xz
+build:
+  detect_binary_files_with_prefix: true
+  noarch: false
+  noarch_python: false
+  number: '0'
+  script: install.bat
+  string: ha6c1112_0
+requirements:
+  build:
+    - cmake 3.24.3 h1537add_0
+    - m2-msys2-runtime 2.5.0.17080.65c939c 3
+    - m2-patch 2.7.5 2
+    - m2w64-gcc-libgfortran 5.3.0 6
+    - m2w64-gcc-libs 5.3.0 7
+    - m2w64-gcc-libs-core 5.3.0 7
+    - m2w64-gmp 6.1.0 2
+    - m2w64-libwinpthread-git 5.0.0.4634.697f757 2
+    - m2w64-pkg-config 0.29.1 2
+    - make 4.3 h3d2af85_1
+    - msys2-conda-epoch 20160418 1
+    - ninja 1.11.0 h2d74725_0
+    - perl 5.32.1.1 2_h57928b3_strawberry
+    - ucrt 10.0.22621.0 h57928b3_0
+    - vc 14.3 h3d8a991_9
+    - vs2015_runtime 14.32.31332 h1d6e394_9
+    - vs2019_win-64 19.29.30139 hb9aee9d_9
+    - vswhere 3.0.3 h57928b3_0
+  host:
+    - boost-cpp 1.78.0 h9f4b32c_1
+    - bzip2 1.0.8 h8ffe710_4
+    - ca-certificates 2022.9.24 h5b45459_0
+    - cairo 1.16.0 hd694305_1014
+    - curl 7.86.0 heaf79c2_1
+    - expat 2.5.0 h1537add_0
+    - font-ttf-dejavu-sans-mono 2.37 hab24e00_0
+    - font-ttf-inconsolata 3.000 h77eed37_0
+    - font-ttf-source-code-pro 2.038 h77eed37_0
+    - font-ttf-ubuntu 0.83 hab24e00_0
+    - fontconfig 2.14.1 hbde0cde_0
+    - fonts-conda-ecosystem 1 0
+    - fonts-conda-forge 1 0
+    - freetype 2.12.1 h546665d_0
+    - gettext 0.21.1 h5728263_0
+    - glib 2.74.1 h12be248_0
+    - glib-tools 2.74.1 h12be248_0
+    - icu 70.1 h0e60522_0
+    - jpeg 9e h8ffe710_2
+    - krb5 1.19.3 hc8ab02b_0
+    - lcms2 2.14 h90d422f_0
+    - lerc 4.0.0 h63175ca_0
+    - libcurl 7.86.0 heaf79c2_1
+    - libdeflate 1.14 hcfcfb64_0
+    - libffi 3.4.2 h8ffe710_5
+    - libglib 2.74.1 h79619a9_0
+    - libiconv 1.17 h8ffe710_0
+    - libpng 1.6.38 h19919ed_0
+    - libsqlite 3.39.4 hcfcfb64_0
+    - libssh2 1.10.0 h9a1e1f7_3
+    - libtiff 4.4.0 h8e97e67_4
+    - libzlib 1.2.13 hcfcfb64_4
+    - openjpeg 2.5.0 hc9384bd_1
+    - openssl 3.0.7 hcfcfb64_0
+    - pcre2 10.37 hdfff0fc_1
+    - pixman 0.40.0 h8ffe710_0
+    - python 3.11.0 hcf16a7b_0_cpython
+    - tk 8.6.12 h8ffe710_0
+    - tzdata 2022f h191b570_0
+    - ucrt 10.0.22621.0 h57928b3_0
+    - vc 14.3 h3d8a991_9
+    - vs2015_runtime 14.32.31332 h1d6e394_9
+    - xz 5.2.6 h8d14728_0
+    - zlib 1.2.13 hcfcfb64_4
+    - zstd 1.5.2 h7755175_4
+  run:
+    - boost-cpp >=1.78.0,<1.78.1.0a0
+    - cairo >=1.16.0,<2.0a0
+    - fontconfig >=2.14.1,<3.0a0
+    - fonts-conda-ecosystem
+    - freetype >=2.12.1,<3.0a0
+    - gettext >=0.21.1,<1.0a0
+    - jpeg >=9e,<10a
+    - lcms2 >=2.14,<3.0a0
+    - libcurl >=7.86.0,<8.0a0
+    - libglib >=2.74.1,<3.0a0
+    - libiconv >=1.17,<2.0a0
+    - libpng >=1.6.38,<1.7.0a0
+    - libtiff >=4.4.0,<5.0a0
+    - libzlib >=1.2.13,<1.3.0a0
+    - openjpeg >=2.5.0,<3.0a0
+    - poppler-data
+    - ucrt >=10.0.20348.0
+    - vc >=14.2,<15
+    - vs2015_runtime >=14.29.30139
+test:
+  commands:
+    - pdfinfo -listenc
+    - pdfunite --help
+    - pdftocairo --help
+about:
+  home: https://poppler.freedesktop.org/
+  license: GPL-2.0-only
+  license_family: GPL
+  license_file: COPYING
+  summary: The Poppler PDF manipulation library.
+extra:
+  copy_test_source_files: true
+  feedstock-name: poppler
+  final: true
+  recipe-maintainers:
+    - ocefpaf
+    - pkgw
+    - xhochy
+    - xylar

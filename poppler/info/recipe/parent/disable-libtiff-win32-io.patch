@@ -1,0 +1,23 @@
+diff --git a/goo/TiffWriter.cc b/goo/TiffWriter.cc
+index 98cbea5..65e99a1 100644
+--- a/goo/TiffWriter.cc
++++ b/goo/TiffWriter.cc
+@@ -164,12 +164,12 @@ bool TiffWriter::init(FILE *openedFile, int width, int height, int hDPI, int vDP
+         return false;
+     }
+ 
+-#    ifdef _WIN32
+-    // Convert C Library handle to Win32 Handle
+-    priv->f = TIFFFdOpen(_get_osfhandle(fileno(openedFile)), "-", "w");
+-#    else
+-    priv->f = TIFFFdOpen(fileno(openedFile), "-", "w");
+-#    endif
++    // conda-forge: our libtiff uses Unix FDs even on Windows. But
++    // we must be careful to dup() the FD, because otherwise we will
++    // cause crashes from closing a file handle twice on Windows:
++    // once in TIFFClose(), and once in the caller, which expects to
++    // have to fclose(openedFile) itself.
++    priv->f = TIFFFdOpen(dup(fileno(openedFile)), "-", "w");
+ 
+     if (!priv->f) {
+         return false;

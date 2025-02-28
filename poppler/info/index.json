@@ -1,0 +1,33 @@
+{
+  "arch": "x86_64",
+  "build": "ha6c1112_0",
+  "build_number": 0,
+  "depends": [
+    "boost-cpp >=1.78.0,<1.78.1.0a0",
+    "cairo >=1.16.0,<2.0a0",
+    "fontconfig >=2.14.1,<3.0a0",
+    "fonts-conda-ecosystem",
+    "freetype >=2.12.1,<3.0a0",
+    "gettext >=0.21.1,<1.0a0",
+    "jpeg >=9e,<10a",
+    "lcms2 >=2.14,<3.0a0",
+    "libcurl >=7.86.0,<8.0a0",
+    "libglib >=2.74.1,<3.0a0",
+    "libiconv >=1.17,<2.0a0",
+    "libpng >=1.6.38,<1.7.0a0",
+    "libtiff >=4.4.0,<5.0a0",
+    "libzlib >=1.2.13,<1.3.0a0",
+    "openjpeg >=2.5.0,<3.0a0",
+    "poppler-data",
+    "ucrt >=10.0.20348.0",
+    "vc >=14.2,<15",
+    "vs2015_runtime >=14.29.30139"
+  ],
+  "license": "GPL-2.0-only",
+  "license_family": "GPL",
+  "name": "poppler",
+  "platform": "win",
+  "subdir": "win-64",
+  "timestamp": 1667382401794,
+  "version": "22.11.0"
+}
